@@ -1,0 +1,18 @@
+library(MASS)
+
+data(water)
+
+plot(water$hardness, water$mortality,
+     xlab = "Hardness", ylab = "Mortality",
+     main = "Hardness vs Mortality",
+     pch = 19, col = "blue")
+
+model <- lm(mortality ~ hardness, data = water)
+
+abline(model, col = "red", lwd = 2)
+
+print(cor(water$hardness, water$mortality))
+
+print(summary(model))
+
+predict(model, newdata = data.frame(hardness = 88))
