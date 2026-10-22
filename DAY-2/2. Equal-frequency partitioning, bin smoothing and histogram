@@ -1,0 +1,19 @@
+prices <- c(1, 1, 5, 5, 5, 5, 5, 8, 8, 10, 10, 10, 10, 12, 14, 14, 14, 15, 15, 15, 15, 15, 15, 18, 18, 18, 18, 18, 20, 20, 20, 20, 20, 20, 21, 21, 21, 21, 25, 25, 25, 25, 25, 28, 28, 30)
+
+bins <- split(prices, cut(seq_along(prices), breaks = 3, labels = FALSE))
+
+print(bins)
+
+bin_means <- lapply(bins, function(x) rep(mean(x), length(x)))
+print(bin_means)
+
+bin_boundaries <- lapply(bins, function(x) {
+  bounds <- range(x)
+  sapply(x, function(v) {
+    if (abs(v - bounds[1]) <= abs(v - bounds[2])) bounds[1] else bounds[2]
+  })
+})
+
+print(bin_boundaries)
+
+hist(prices, breaks = 10, main = "Histogram of Electronics Prices", xlab = "Price", col = "skyblue")
