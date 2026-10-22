@@ -1,0 +1,10 @@
+A <- c(18, 22, 20)
+B <- c(2, 28, 40)
+C <- c(20, 10, 40)
+
+data <- data.frame(A, B, C)
+
+cov(B, C)
+cov(data)
+cor(B, C)
+cor(data)
